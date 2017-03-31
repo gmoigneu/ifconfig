@@ -78,7 +78,7 @@ $ http ifconfig.co/json
     "country": "{{ $lookup['country'] }}",
     "hostname": "{{ $lookup['hostname'] }}",
     "ip": "{{ $lookup['ip'] }}",
-    "ip_decimal": {{ $lookup['ip_decimal']}} //1356267917
+    "ip_decimal": {{ $lookup['ip_decimal']}}
 }</pre>
 
         <p>Setting the Accept header to application/json also works.</p>

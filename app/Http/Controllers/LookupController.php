@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Ip;
 use App\Models\Resolver;
 use Illuminate\Http\Request;
+use Illuminate\View;
 
 class LookupController extends Controller
 {
  
     var $terminalAgent = '@^(?:curl|Wget|fetch\slibfetch|ddclient|Go-http-client|HTTPie)\/.*|Go\s1\.1\spackage\shttp$@';   
-    
+
     public function index(Request $request) {
         
         // If application/json is sent in the Accept header
@@ -26,11 +27,13 @@ class LookupController extends Controller
             $ip = Ip::getIp();
             $resolver = new Resolver($ip);
             
-            return view('index')->with(
-                'lookup', array_merge(
-                    ['ip' => $ip],
-                    $resolver->getAll()
-                )
+            return view('index', [
+                    'lookup' => array_merge(
+                        ['ip' => $ip],
+                        $resolver->getAll()
+                    ),
+                    'host' => $_SERVER['HTTP_HOST']
+                ]
               
             );
         }

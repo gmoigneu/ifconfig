@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/lumen-framework": "5.4.*",
         "vlucas/phpdotenv": "~2.2",
-        "geoip2/geoip2": "~2.0"
+        "geoip2/geoip2": "~2.0",
+        "behat/behat": "^3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

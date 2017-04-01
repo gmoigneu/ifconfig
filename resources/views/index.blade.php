@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>What is my IP address? &mdash; ifconfig.co</title>
+    <title>What is my IP address? &mdash; {{ $host }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="What is my IP address?">
     <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -45,34 +45,34 @@
       <div class="pure-u-1 pure-u-md-1-2">
         <h2>CLI examples:</h2>
         <pre>
-$ curl ifconfig.co
+$ curl {{ $host }}
 {{ $lookup['ip'] }}
 
-$ http -b ifconfig.co
+$ http -b {{ $host }}
 {{ $lookup['ip'] }}
 
-$ wget -qO- ifconfig.co
+$ wget -qO- {{ $host }}
 {{ $lookup['ip'] }}
 
-$ fetch -qo- https://ifconfig.co
+$ fetch -qo- https://{{ $host }}
 {{ $lookup['ip'] }}</pre>
 
         <h2>Country lookup:</h2>
         <pre>
-$ http ifconfig.co/country
+$ http {{ $host }}/country
 {{ $lookup['country'] }}</pre>
 
 
         <h2>City lookup:</h2>
         <pre>
-$ http ifconfig.co/city
+$ http {{ $host }}/city
 {{ $lookup['city'] }}</pre>
 
       </div>
       <div class="pure-u-1 pure-u-md-1-2">
         <h2>JSON output:</h2>
         <pre>
-$ http ifconfig.co/json
+$ http {{ $host }}/json
 { 
     "city": "{{ $lookup['city'] }}",
     "country": "{{ $lookup['country'] }}",
@@ -85,12 +85,12 @@ $ http ifconfig.co/json
         <h2>Plain output:</h2>
         <p>Always returns the IP address including a trailing newline, regardless of user agent.</p>
         <pre>
-$ http ifconfig.co/ip
+$ http {{ $host }}/ip
 {{ $lookup['ip'] }}</pre>
 
         <h2>Testing port connectivity:</h2>
         <pre>
-$ http ifconfig.co/port/8080
+$ http {{ $host }}/port/8080
 {
     "ip": "{{ $lookup['ip'] }}",
     "port": 8080,
